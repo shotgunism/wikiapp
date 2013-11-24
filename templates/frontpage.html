@@ -1,0 +1,40 @@
+{% block content %}
+<html>
+	<head>
+		<title>Welcome to Updtr.</title>
+		<link href="/css/stylesheet.css" rel="stylesheet" type="text/css">
+	</head>
+	<body style="font-family:sans-serif;">
+		<div class="title" style="font-family:sans-serif; font-size:30px;">Updtr.</div>
+		<div>{{user_parameter}}</div>
+		<nav id="main_menu" style="alignment-adjust:after-edge; display:inline-block; align: right">
+        <ul>
+        	<!--ADD HERE VARIABLE TO CONTROL FOR USER LOGIN
+        		REPLACE BELOW
+        	-->
+            <li><a href='/login'>Login</a></li><em>|</em><li><a href='/signup'>Register</a></li>
+            <li><a href='/logout'>Logout</a></li>
+        
+        
+        </ul>
+    </nav>
+		<div style="font-family:sans-serif; font-size:20px;">Recently edited Updtr. Entries:</div>
+		<br><hr>
+	{% for entry in entries %}
+		<br>
+		<div><em>{{entry.subject}}</em></div>
+		<br>
+		<div>{{entry.created.strftime("%d, %b, %Y") | safe}}</div>
+		<br>
+		<div><pre>{{entry.content | safe}}<br>
+		
+		</pre></div>
+		
+		<hr>
+	{%endfor%}
+	
+	
+	</body>
+
+</html>
+{% endblock %}
